@@ -1,0 +1,8 @@
+pipeline:
+  enable_streaming: true
+  batch_size: 200
+
+alerts:
+  min_quality_score: 80
+  max_mae: 50000
+

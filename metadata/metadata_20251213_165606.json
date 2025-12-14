@@ -1,0 +1,9 @@
+{
+    "run_id": "20251213_165606",
+    "source_file": "data/sample_data.csv",
+    "rows_before": 7,
+    "rows_after": 1001,
+    "duplicates_removed": 0,
+    "salary_outliers": 1,
+    "quality_score": 90
+}

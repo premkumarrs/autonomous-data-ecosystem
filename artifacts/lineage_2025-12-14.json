@@ -1,0 +1,38 @@
+{
+  "run_date": "2025-12-14",
+  "pipeline": [
+    "Data Ingestion",
+    "Schema Intelligence",
+    "Data Quality",
+    "Analytics",
+    "ML Pipeline",
+    "Feature Store",
+    "SQL Warehouse"
+  ],
+  "edges": [
+    [
+      "Ingestion",
+      "Schema"
+    ],
+    [
+      "Schema",
+      "Quality"
+    ],
+    [
+      "Quality",
+      "Analytics"
+    ],
+    [
+      "Analytics",
+      "ML"
+    ],
+    [
+      "ML",
+      "Feature Store"
+    ],
+    [
+      "Feature Store",
+      "Warehouse"
+    ]
+  ]
+}

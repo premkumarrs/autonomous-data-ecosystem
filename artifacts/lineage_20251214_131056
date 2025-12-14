@@ -1,0 +1,18 @@
+// Autonomous Data Ecosystem
+digraph {
+	Ingest [label="Data Ingestion"]
+	Schema [label="Schema Intelligence"]
+	Quality [label="Data Quality"]
+	Analytics [label=Analytics]
+	ML [label="ML Pipeline"]
+	Features [label="Feature Store"]
+	Alerts [label=Alerts]
+	Warehouse [label="SQL Warehouse"]
+	Ingest -> Schema
+	Schema -> Quality
+	Quality -> Analytics
+	Analytics -> ML
+	ML -> Features
+	ML -> Alerts
+	Features -> Warehouse
+}

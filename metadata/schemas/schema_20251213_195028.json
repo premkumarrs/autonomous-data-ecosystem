@@ -1,0 +1,8 @@
+{
+    "id": "int64",
+    "name": "object",
+    "age": "int64",
+    "salary": "int64",
+    "department": "object",
+    "source": "object"
+}

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.env/
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Databases
+*.db
+
+# Artifacts (keep JSON, ignore CSV if large)
+artifacts/*.csv
+artifacts/*.png
+
+# Logs
+logs/
+
+# Models (optional – comment out if you want them)
+# models/*.joblib
