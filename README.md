@@ -8,32 +8,32 @@ Rather than focusing only on ETL, this system emphasizes data reliability, obser
 
 ## End-to-End Pipeline Overview
 
-### Data Ingestion
-The pipeline begins by loading structured data from CSV sources. Each execution is associated with a runtime execution date, allowing the system to support deterministic re-runs, historical backfills, and date-partitioned ingestion. This mirrors how production data platforms handle daily or scheduled batch jobs.
+**> Data Ingestion**  
+Loads structured CSV data with a runtime execution date, enabling deterministic re-runs, backfills, and date-partitioned processing.
 
-### Schema Intelligence
-After ingestion, the pipeline automatically extracts the dataset schema and compares it against the most recently saved schema version. Any schema changes are detected and logged, and the current schema is persisted as a historical artifact. This enables early detection of schema drift and protects downstream systems from silent breakage.
+**> Schema Intelligence**  
+Automatically extracts and compares schemas across runs to detect drift and persist schema history for downstream safety.
 
-### Data Quality and Validation
-The system performs multiple data quality operations, including duplicate removal, missing value handling using statistical imputation, and outlier detection using IQR-based logic. A quantitative data quality score is generated for each run. In addition, a rule-based validation engine enforces domain-specific quality constraints and logs any violations for auditing purposes.
+**> Data Quality and Validation**  
+Cleans duplicates, imputes missing values, detects outliers, computes a quality score, and enforces rule-based validations.
 
-### Analytics Layer
-Once data quality checks pass, the pipeline computes analytical aggregates such as average salary by department and headcount distribution. These analytics represent typical business-facing metrics and are designed to be reusable by downstream reporting or dashboarding layers.
+**> Analytics Layer**  
+Generates reusable business metrics such as departmental salary averages and headcount distributions.
 
-### Machine Learning Pipeline
-The pipeline includes an integrated machine learning stage where categorical features are encoded, a Linear Regression model is trained to predict salary, and model performance is evaluated using Mean Absolute Error (MAE). Trained models are persisted to disk, and model metrics are appended to a historical metrics log. Feature datasets are versioned and stored separately to ensure reproducibility between training and inference.
+**> Machine Learning Pipeline**  
+Encodes features, trains a Linear Regression model, evaluates MAE, stores models, and versions feature datasets for reproducibility.
 
-### Streaming Simulation
-To emulate real-time ingestion patterns, the system processes the dataset in configurable micro-batches. This simulation demonstrates how the same pipeline logic can be adapted to streaming or near-real-time data flows without requiring external infrastructure.
+**> Streaming Simulation**  
+Processes data in configurable micro-batches to simulate real-time or near-real-time ingestion patterns.
 
-### SQL Warehouse Integration
-Cleaned and enriched data is persisted into a SQLite-based warehouse. Ingestion is idempotent by execution date, ensuring that re-running the pipeline for the same date does not create duplicate records. The warehouse also stores historical KPI metrics to support trend analysis over time.
+**> SQL Warehouse Integration**  
+Persists enriched data into SQLite with idempotent, date-based ingestion and historical KPI tracking.
 
-### Pipeline Lineage Tracking
-Each pipeline run records structured lineage information as JSON artifacts, capturing the logical flow of data across pipeline stages. This provides traceability and auditability without relying on external orchestration or visualization tools.
+**> Pipeline Lineage Tracking**  
+Records structured lineage metadata for each run, enabling full traceability across pipeline stages.
 
-### Performance Monitoring
-The system tracks execution time and memory usage for every run, providing basic observability into pipeline performance and resource utilization.
+**> Performance Monitoring**  
+Captures execution time and memory usage to provide basic observability into pipeline performance.
 
 ---
 
